@@ -1,9 +1,9 @@
 Metadata-Version: 2.1
 Name: pydaab
-Version: 0.25.1
+Version: 0.25.2
 Summary: Manipulate audio with an simple and easy high level interface
 Home-page: http://pydaab.com
-Author: James Robert
+Author: James Robert, Lam Nguyen
 Author-email: lamnguyenx@gmail.com
 License: MIT
 Keywords: audio sound high-level

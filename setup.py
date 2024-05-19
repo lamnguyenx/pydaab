@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 
 setup(
     name         = 'pydaab',
-    version      = '0.25.1',
+    version      = '0.25.2',
     author       = 'James Robert, Lam Nguyen',
     author_email = 'lamnguyenx@gmail.com',
     description  = 'Manipulate audio with an simple and easy high level interface',
