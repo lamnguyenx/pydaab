@@ -109,21 +109,21 @@ def ratio_to_db(ratio, val2=None, using_amplitude=True):
         return 10 * log(ratio, 10)
 
 
-def register_pydub_effect(fn, name=None):
+def register_pydaab_effect(fn, name=None):
     """
-    decorator for adding pydub effects to the AudioSegment objects.
+    decorator for adding pydaab effects to the AudioSegment objects.
     example use:
-        @register_pydub_effect
+        @register_pydaab_effect
         def normalize(audio_segment):
             ...
     or you can specify a name:
-        @register_pydub_effect("normalize")
+        @register_pydaab_effect("normalize")
         def normalize_audio_segment(audio_segment):
             ...
     """
     if isinstance(fn, basestring):
         name = fn
-        return lambda fn: register_pydub_effect(fn, name)
+        return lambda fn: register_pydaab_effect(fn, name)
 
     if name is None:
         name = fn.__name__

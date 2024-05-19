@@ -2,7 +2,7 @@
 /.project
 /.pydevproject
 /dist/
-/pydub.egg-info/
+/*.egg-info/
 .DS_Store
 env
 *.swp

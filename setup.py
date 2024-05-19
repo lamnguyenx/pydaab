@@ -4,18 +4,19 @@ Manipulate audio with an simple and easy high level interface.
 See the README file for details, usage info, and a list of gotchas.
 """
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
-    name='pydub',
-    version='0.25.1',
-    author='James Robert',
-    author_email='jiaaro@gmail.com',
-    description='Manipulate audio with an simple and easy high level interface',
-    license='MIT',
-    keywords='audio sound high-level',
-    url='http://pydub.com',
-    packages=['pydub'],
+    name         = 'pydaab',
+    version      = '0.25.1',
+    author       = 'James Robert, Lam Nguyen',
+    author_email = 'lamnguyenx@gmail.com',
+    description  = 'Manipulate audio with an simple and easy high level interface',
+    license      = 'MIT',
+    keywords     = 'audio sound high-level',
+    url          = 'http://pydaab.com',
+    packages     = find_packages(where='src'),
+    package_dir={'': 'src'},
     long_description=__doc__,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -38,5 +39,5 @@ setup(
         "Topic :: Multimedia :: Sound/Audio :: Mixers",
         "Topic :: Software Development :: Libraries",
         'Topic :: Utilities',
-    ]
+    ],
 )

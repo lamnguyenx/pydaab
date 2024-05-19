@@ -10,9 +10,9 @@ from tempfile import (
 import tempfile
 import struct
 
-from pydub import AudioSegment
-from pydub.audio_segment import extract_wav_headers
-from pydub.utils import (
+from pydaab import AudioSegment
+from pydaab.audio_segment import extract_wav_headers
+from pydaab.utils import (
     db_to_float,
     ratio_to_db,
     make_chunks,
@@ -21,18 +21,18 @@ from pydub.utils import (
     get_supported_decoders,
     get_supported_encoders,
 )
-from pydub.exceptions import (
+from pydaab.exceptions import (
     InvalidTag,
     InvalidID3TagVersion,
     InvalidDuration,
     CouldntDecodeError,
     MissingAudioParameter,
 )
-from pydub.silence import (
+from pydaab.silence import (
     detect_silence,
     split_on_silence,
 )
-from pydub.generators import (
+from pydaab.generators import (
     Sine,
     Square,
     Pulse,
@@ -150,7 +150,7 @@ if sys.version_info >= (3, 6):
         def test_export_pathlib_path(self):
             seg1 = AudioSegment.from_file(self.mp3_path_str)
             from pathlib import Path
-            path = Path(tempfile.gettempdir()) / 'pydub-test-export-8ajds.mp3'
+            path = Path(tempfile.gettempdir()) / 'pydaab-test-export-8ajds.mp3'
             try:
                 seg1.export(path, format='mp3')
                 seg2 = AudioSegment.from_file(path, format='mp3')

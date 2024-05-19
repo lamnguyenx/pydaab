@@ -1,22 +1,22 @@
-# Pydub [![Build Status](https://travis-ci.org/jiaaro/pydub.svg?branch=master)](https://travis-ci.org/jiaaro/pydub) [![Build status](https://ci.appveyor.com/api/projects/status/gy1ucp9o5khq7fqi/branch/master?svg=true)](https://ci.appveyor.com/project/jiaaro/pydub/branch/master)
+# Pydaab [![Build Status](https://travis-ci.org/lamnguyenx/pydaab.svg?branch=master)](https://travis-ci.org/lamnguyenx/pydaab) [![Build status](https://ci.appveyor.com/api/projects/status/gy1ucp9o5khq7fqi/branch/master?svg=true)](https://ci.appveyor.com/project/lamnguyenx/pydaab/branch/master)
 
-Pydub lets you do stuff to audio in a way that isn't stupid.
+Pydaab lets you do stuff to audio in a way that isn't stupid.
 
 **Stuff you might be looking for**:
- - [Installing Pydub](https://github.com/jiaaro/pydub#installation)
- - [API Documentation](https://github.com/jiaaro/pydub/blob/master/API.markdown)
- - [Dependencies](https://github.com/jiaaro/pydub#dependencies)
- - [Playback](https://github.com/jiaaro/pydub#playback)
- - [Setting up ffmpeg](https://github.com/jiaaro/pydub#getting-ffmpeg-set-up)
- - [Questions/Bugs](https://github.com/jiaaro/pydub#bugs--questions)
- 
+ - [Installing Pydaab](https://github.com/lamnguyenx/pydaab#installation)
+ - [API Documentation](https://github.com/lamnguyenx/pydaab/blob/master/API.markdown)
+ - [Dependencies](https://github.com/lamnguyenx/pydaab#dependencies)
+ - [Playback](https://github.com/lamnguyenx/pydaab#playback)
+ - [Setting up ffmpeg](https://github.com/lamnguyenx/pydaab#getting-ffmpeg-set-up)
+ - [Questions/Bugs](https://github.com/lamnguyenx/pydaab#bugs--questions)
+
 
 ##  Quickstart
 
 Open a WAV file
 
 ```python
-from pydub import AudioSegment
+from pydaab import AudioSegment
 
 song = AudioSegment.from_wav("never_gonna_give_you_up.wav")
 ```
@@ -41,7 +41,7 @@ aac_version = AudioSegment.from_file("never_gonna_give_you_up.aiff", "aac")
 Slice audio:
 
 ```python
-# pydub does things in milliseconds
+# pydaab does things in milliseconds
 ten_seconds = 10 * 1000
 
 first_10_seconds = song[:ten_seconds]
@@ -112,16 +112,16 @@ Save the results with tags (metadata)
 awesome.export("mashup.mp3", format="mp3", tags={'artist': 'Various artists', 'album': 'Best of 2011', 'comments': 'This album is awesome!'})
 ```
 
-You can pass an optional bitrate argument to export using any syntax ffmpeg 
+You can pass an optional bitrate argument to export using any syntax ffmpeg
 supports.
 
 ```python
 awesome.export("mashup.mp3", format="mp3", bitrate="192k")
 ```
 
-Any further arguments supported by ffmpeg can be passed as a list in a 
-'parameters' argument, with switch first, argument second. Note that no 
-validation takes place on these parameters, and you may be limited by what 
+Any further arguments supported by ffmpeg can be passed as a list in a
+'parameters' argument, with switch first, argument second. Note that no
+validation takes place on these parameters, and you may be limited by what
 your particular build of ffmpeg/avlib supports.
 
 ```python
@@ -135,54 +135,54 @@ awesome.export("mashup.mp3", format="mp3", parameters=["-ac", "2", "-vol", "150"
 ## Debugging
 
 Most issues people run into are related to converting between formats using
-ffmpeg/avlib. Pydub provides a logger that outputs the subprocess calls to 
+ffmpeg/avlib. Pydaab provides a logger that outputs the subprocess calls to
 help you track down issues:
 
 ```python
 >>> import logging
 
->>> l = logging.getLogger("pydub.converter")
+>>> l = logging.getLogger("pydaab.converter")
 >>> l.setLevel(logging.DEBUG)
 >>> l.addHandler(logging.StreamHandler())
 
 >>> AudioSegment.from_file("./test/data/test1.mp3")
 subprocess.call(['ffmpeg', '-y', '-i', '/var/folders/71/42k8g72x4pq09tfp920d033r0000gn/T/tmpeZTgMy', '-vn', '-f', 'wav', '/var/folders/71/42k8g72x4pq09tfp920d033r0000gn/T/tmpK5aLcZ'])
-<pydub.audio_segment.AudioSegment object at 0x101b43e10>
+<pydaab.audio_segment.AudioSegment object at 0x101b43e10>
 ```
 
-Don't worry about the temporary files used in the conversion. They're cleaned up 
+Don't worry about the temporary files used in the conversion. They're cleaned up
 automatically.
 
 ## Bugs & Questions
 
-You can file bugs in our [github issues tracker](https://github.com/jiaaro/pydub/issues), 
-and ask any technical questions on 
-[Stack Overflow using the pydub tag](http://stackoverflow.com/questions/ask?tags=pydub). 
+You can file bugs in our [github issues tracker](https://github.com/lamnguyenx/pydaab/issues),
+and ask any technical questions on
+[Stack Overflow using the pydaab tag](http://stackoverflow.com/questions/ask?tags=pydaab).
 We keep an eye on both.
 
 ## Installation
 
-Installing pydub is easy, but don't forget to install ffmpeg/avlib (the next section in this doc)
+Installing pydaab is easy, but don't forget to install ffmpeg/avlib (the next section in this doc)
 
-    pip install pydub
+    pip install pydaab
 
-Or install the latest dev version from github (or replace `@master` with a [release version like `@v0.12.0`](https://github.com/jiaaro/pydub/releases))…
+Or install the latest dev version from github (or replace `@master` with a [release version like `@v0.12.0`](https://github.com/lamnguyenx/pydaab/releases))…
 
-    pip install git+https://github.com/jiaaro/pydub.git@master
-
--OR-
-
-    git clone https://github.com/jiaaro/pydub.git
+    pip install git+https://github.com/lamnguyenx/pydaab.git@master
 
 -OR-
 
-Copy the pydub directory into your python path. Zip 
-[here](https://github.com/jiaaro/pydub/zipball/master)
+    git clone https://github.com/lamnguyenx/pydaab.git
+
+-OR-
+
+Copy the pydaab directory into your python path. Zip
+[here](https://github.com/lamnguyenx/pydaab/zipball/master)
 
 ## Dependencies
 
-You can open and save WAV files with pure python. For opening and saving non-wav 
-files – like mp3 – you'll need [ffmpeg](http://www.ffmpeg.org/) or 
+You can open and save WAV files with pure python. For opening and saving non-wav
+files – like mp3 – you'll need [ffmpeg](http://www.ffmpeg.org/) or
 [libav](http://libav.org/).
 
 ### Playback
@@ -193,10 +193,10 @@ You can play audio if you have one of these installed (simpleaudio _strongly_ re
  - [pyaudio](https://people.csail.mit.edu/hubert/pyaudio/docs/#)
  - ffplay (usually bundled with ffmpeg, see the next section)
  - avplay (usually bundled with libav, see the next section)
- 
+
 ```python
-from pydub import AudioSegment
-from pydub.playback import play
+from pydaab import AudioSegment
+from pydaab.playback import play
 
 sound = AudioSegment.from_file("mysound.wav", format="wav")
 play(sound)
@@ -234,7 +234,7 @@ Windows:
 
 1. Download and extract libav from [Windows binaries provided here](http://builds.libav.org/windows/).
 2. Add the libav `/bin` folder to your PATH envvar
-3. `pip install pydub`
+3. `pip install pydaab`
 
 ## Important Notes
 
@@ -252,7 +252,7 @@ When no codec is specified exporting to `ogg` will _default_ to using `vorbis`
 as a convenience. That is:
 
 ```python
-from pydub import AudioSegment
+from pydaab import AudioSegment
 song = AudioSegment.from_mp3("test/data/test1.mp3")
 song.export("out.ogg", format="ogg")  # Is the same as:
 song.export("out.ogg", format="ogg", codec="libvorbis")
@@ -265,7 +265,7 @@ Suppose you have a directory filled with *mp4* and *flv* videos and you want to 
 ```python
 import os
 import glob
-from pydub import AudioSegment
+from pydaab import AudioSegment
 
 video_dir = '/home/johndoe/downloaded_videos/'  # Path where the videos are located
 extension_list = ('*.mp4', '*.flv')
@@ -281,7 +281,7 @@ for extension in extension_list:
 
 ```python
 from glob import glob
-from pydub import AudioSegment
+from pydaab import AudioSegment
 
 playlist_songs = [AudioSegment.from_mp3(mp3_file) for mp3_file in glob("*.mp3")]
 
@@ -310,7 +310,7 @@ with open("%s_minute_playlist.mp3" % playlist_length, 'wb') as out_f:
 
 ## License ([MIT License](http://opensource.org/licenses/mit-license.php))
 
-Copyright © 2011 James Robert, http://jiaaro.com
+Copyright © 2011 James Robert, http://lamnguyenx.com
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

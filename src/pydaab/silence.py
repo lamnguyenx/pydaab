@@ -114,7 +114,7 @@ def split_on_silence(audio_segment, min_silence_len=1000, silence_thresh=-16, ke
     """
     Returns list of audio segments from splitting audio_segment on silent sections
 
-    audio_segment - original pydub.AudioSegment() object
+    audio_segment - original pydaab.AudioSegment() object
 
     min_silence_len - (in ms) minimum length of a silence to be used for
         a split. default: 1000ms
