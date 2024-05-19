@@ -11,6 +11,7 @@ from .logging_utils import log_conversion, log_subprocess_output
 from .utils import mediainfo_json, fsdecode
 import base64
 from collections import namedtuple
+import numpy as np
 
 try:
     from StringIO import StringIO
@@ -1045,9 +1046,23 @@ class AudioSegment(object):
                 channels_data[0].typecode,
                 b'\0' * (frame_count * self.sample_width)
             )
+            converted_upper_limit = np.iinfo(channels_data[0].typecode).max
+            converted_lower_limit = np.iinfo(channels_data[0].typecode).min
             for raw_channel_data in channels_data:
-                for i in range(frame_count):
-                    converted[i] += raw_channel_data[i] // self.channels
+                try:
+                    for i in range(frame_count):
+                        converted[i] += raw_channel_data[i] // self.channels
+                except OverflowError:
+                    uncalibrated_val = (
+                        converted[i] + raw_channel_data[i] // self.channels
+                    )
+                    if abs(uncalibrated_val - converted_lower_limit) < abs(
+                        converted_upper_limit - uncalibrated_val
+                    ):
+                        converted[i] = converted_lower_limit
+                    else:
+                        converted[i] = converted_upper_limit
+
             frame_width = self.frame_width // self.channels
         elif self.channels == 1:
             dup_channels = [self for iChannel in range(channels)]

@@ -13,6 +13,8 @@ Pydaab lets you do stuff to audio in a way that isn't stupid.
 
 ##  Quickstart
 
+Please use ffmpeg static biaries downloaded from: https://github.com/eugeneware/ffmpeg-static/releases
+
 Open a WAV file
 
 ```python
